@@ -23,28 +23,29 @@ directx = [1,-1,0,0]
 def bfs(i, j):
     deq = deque()
     cnt = 0
-    max = -2e43
+    max = -2e33
     deq.append((i,j, cnt))
     used = [[0]*X for _ in range(Y)]
     used[i][j] = 1
     while deq:
+
         i, j, cnt = deq.popleft()
         for q in range(4):
             newi = directy[q] + i
             newj = directx[q] + j
             if newi < 0 or newi > Y-1 or newj < 0 or newj > X-1:continue
+            if used[newi][newj] != 0: continue
             if arr[newi][newj] == 'L':
-                if used[newi][newj] == 0: 
-                    used[newi][newj] = cnt+1
-                    deq.append((newi, newj, cnt+1))
+                used[newi][newj] = cnt +1
+                deq.append((newi, newj, cnt+1))
     for a in range(Y):
         for b in range(X):
             if used[a][b] > max:
                 max = used[a][b]
     return max
+
 for i in range(Y):
     for j in range(X):
         if arr[i][j] == "L":
-            bfs(i,j)
             count.append(bfs(i, j))
 print(max(count))
