@@ -30,7 +30,7 @@
 
 ## 추가 내용
 
-forEach로 유니온파인드를 한번에 적용시킬수있다.
+forEach로 bucket을 만들어 한번에 적용시킬수있다.
 
 ```javascript
 let arr = Array(input.length + 2).fill(false);
