@@ -28,14 +28,14 @@
 
 ## 추가 내용
 
-1. filter() 메서드
+1. filter() 메서드 사용
 
 > const count = arr.split(' ').filter(num => num === v).length;
 
 arr 배열을 공백을 기준으로 나누어 배열로 만든 다음, filter() 메서드를 사용하여 배열에서 값 v와 일치하는 요소만 필터링한다.
 그런 다음 필터링된 배열의 길이를 반환하여 v의 개수를 구한다.
 
-2. forEach() 메서드
+2. forEach() 메서드 사용
 
 > let count = 0;
 >
@@ -47,7 +47,7 @@ arr 배열을 공백을 기준으로 나누어 배열로 만든 다음, filter()
 
 split() 메서드로 공백을 기준으로 문자열을 배열로 분할한 후, forEach() 메서드를 사용하여 배열의 각 요소 중 특정 값 v와 일치하는 경우에는 count를 증가시킨다.
 
-3. reduce() 메서드
+3. reduce() 메서드 사용
 
 > const count = arr.split(' ').reduce((count, num) => {
 > if (num === v) {
