@@ -1,6 +1,6 @@
-# [Bronze I] 평균 - 1546 
+# [Bronze I] 평균 - 1546
 
-[문제 링크](https://www.acmicpc.net/problem/1546) 
+[문제 링크](https://www.acmicpc.net/problem/1546)
 
 ### 성능 요약
 
@@ -22,11 +22,26 @@
 
 <p>세준이의 성적을 위의 방법대로 새로 계산했을 때, 새로운 평균을 구하는 프로그램을 작성하시오.</p>
 
-### 입력 
+### 입력
 
  <p>첫째 줄에 시험 본 과목의 개수 N이 주어진다. 이 값은 1000보다 작거나 같다. 둘째 줄에 세준이의 현재 성적이 주어진다. 이 값은 100보다 작거나 같은 음이 아닌 정수이고, 적어도 하나의 값은 0보다 크다.</p>
 
-### 출력 
+### 출력
 
  <p>첫째 줄에 새로운 평균을 출력한다. 실제 정답과 출력값의 절대오차 또는 상대오차가 10<sup>-2</sup> 이하이면 정답이다.</p>
 
+## 추가 내용
+
+#### reduce 메서드 사용해서 리스트 합 구하기
+
+```javascript
+array.reduce((accumulator, currentValue) => { ... }, initialValue);
+
+accumulator: 이전 함수 호출에서 반환된 값. 처음 호출 시에는 initialValue가 들어간다.
+currentValue: 배열의 현재 처리 중인 요소.
+initialValue: 초기 accumulator 값 (생략할 경우 배열의 첫 번째 요소가 기본값으로 사용됨).
+
+
+평균 구하는 예시
+const average = result.reduce((sum, value) => sum + value, 0) / N;
+```
