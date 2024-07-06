@@ -30,19 +30,27 @@
 
 ## 추가 이론
 
+문자 배열, 아스키코드로 바꾸기, 원하는 값 인덱스로 찾기
+
 ```javascript
-const input = require("fs").readFileSync("input.txt").toString().trim();
-const S = input;
+const S = input; // S = beakjoon
 const lst = Array.from(S).map((v) => {
   return v.charCodeAt() - 97;
 });
-const result = Array(26).fill(-1);
+// 배열 아스키코드로 바꾸기
+```
 
-for (let i = 0; i <= lst.length; i++) {
-  if (result[lst[i]] == -1) {
-    result[lst[i]] = i;
-  }
+```javascript
+const input = require("fs").readFileSync("/dev/stdin").toString();
+let answer = [];
+
+for (i = 97; i <= 122; i++) {
+  answer.push(input.indexOf(String.fromCharCode(i)));
 }
+```
 
-console.log(result.join(" "));
+```Python
+for i in range(len(st)):
+    Bucket[st[i]] = st.index(st[i])
+print(*Bucket)
 ```
