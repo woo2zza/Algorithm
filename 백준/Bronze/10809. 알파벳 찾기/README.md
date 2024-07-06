@@ -32,6 +32,8 @@
 
 문자 배열, 아스키코드로 바꾸기, 원하는 값 인덱스로 찾기
 
+#### Javascript
+
 ```javascript
 const S = input; // S = beakjoon
 const lst = Array.from(S).map((v) => {
@@ -48,6 +50,8 @@ for (i = 97; i <= 122; i++) {
   answer.push(input.indexOf(String.fromCharCode(i)));
 }
 ```
+
+#### Python
 
 ```Python
 for i in range(len(st)):
