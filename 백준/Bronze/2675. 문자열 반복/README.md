@@ -1,6 +1,6 @@
-# [Bronze II] 문자열 반복 - 2675 
+# [Bronze II] 문자열 반복 - 2675
 
-[문제 링크](https://www.acmicpc.net/problem/2675) 
+[문제 링크](https://www.acmicpc.net/problem/2675)
 
 ### 성능 요약
 
@@ -20,11 +20,27 @@
 
 <p>QR Code "alphanumeric" 문자는 <code>0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ\$%*+-./:</code> 이다.</p>
 
-### 입력 
+### 입력
 
  <p>첫째 줄에 테스트 케이스의 개수 T(1 ≤ T ≤ 1,000)가 주어진다. 각 테스트 케이스는 반복 횟수 R(1 ≤ R ≤ 8), 문자열 S가 공백으로 구분되어 주어진다. S의 길이는 적어도 1이며, 20글자를 넘지 않는다. </p>
 
-### 출력 
+### 출력
 
  <p>각 테스트 케이스에 대해 P를 출력한다.</p>
 
+## 추가 내용
+
+#### repeat메서드를 사용해서 반복해서 문자출력
+
+```javascript
+// arr = ['a', 'b', 'c']
+
+const repeatCount = 3;
+const result = arr
+  .split("")
+  .map((char) => char.repeat(repeatCount))
+  .join("");
+
+console.log(result);
+// aaabbbccc
+```
