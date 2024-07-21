@@ -2,10 +2,6 @@ const input = require("fs").readFileSync("/dev/stdin").toString().split("\n");
 const S = Number(input[0]);
 let count = 0;
 for (let i = 1; i <= S; i++) {
-  input[i].split("");
-}
-
-for (let i = 1; i <= S; i++) {
   const word = input[i];
   const letter = [];
   let isGroupWord = true;
