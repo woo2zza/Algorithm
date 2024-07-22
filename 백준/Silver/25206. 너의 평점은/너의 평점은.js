@@ -1,14 +1,26 @@
-const table = {
-	"A+": 4.5, "A0": 4.0, "B+": 3.5, "B0": 3.0, "C+": 2.5, "C0": 2.0, "D+": 1.5, "D0": 1.0, "F": 0.0
+const input = require("fs").readFileSync("/dev/stdin").toString().split("\n");
+
+let score = 0;
+let passScore = 0;
+const arr = [
+  { grade: "A+", score: 4.5 },
+  { grade: "A0", score: 4 },
+  { grade: "B+", score: 3.5 },
+  { grade: "B0", score: 3 },
+  { grade: "C+", score: 2.5 },
+  { grade: "C0", score: 2 },
+  { grade: "D+", score: 1.5 },
+  { grade: "D0", score: 1 },
+  { grade: "F", score: 0 },
+];
+for (let i = 0; i < input.length; i++) {
+  for (let j = 0; j < 9; j++) {
+    if (input[i].split(" ")[2] === arr[j].grade) {
+      const grade = input[i].split(" ")[1] * arr[j].score;
+      score += grade;
+      passScore += Number(input[i].split(" ")[1]);
+    }
+  }
 }
 
-
-const input = require("fs").readFileSync(0).toString().trim().split("\n").map(x => x.split(" "));
-let s = 0; 
-let t = 0;
-for (let [a, b, c] of input) {
-	if (c === "P") continue;
-  	t += b * table[c];
-	s += +b; 
-}
-console.log(t/s);
+console.log(score / passScore);
