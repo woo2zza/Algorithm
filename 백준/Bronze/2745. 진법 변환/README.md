@@ -1,6 +1,6 @@
-# [Bronze II] 진법 변환 - 2745 
+# [Bronze II] 진법 변환 - 2745
 
-[문제 링크](https://www.acmicpc.net/problem/2745) 
+[문제 링크](https://www.acmicpc.net/problem/2745)
 
 ### 성능 요약
 
@@ -22,13 +22,33 @@
 
 <p>A: 10, B: 11, ..., F: 15, ..., Y: 34, Z: 35</p>
 
-### 입력 
+### 입력
 
  <p>첫째 줄에 N과 B가 주어진다. (2 ≤ B ≤ 36)</p>
 
 <p>B진법 수 N을 10진법으로 바꾸면, 항상 10억보다 작거나 같다.</p>
 
-### 출력 
+### 출력
 
  <p>첫째 줄에 B진법 수 N을 10진법으로 출력한다.</p>
 
+## 추가 내용
+
+진법 변환을 바로하는 과정
+
+ZZZZZ를 36 진법으로 바꾸는 과정
+
+```python
+N = 'ZZZZZ'
+B = 36
+print(int(N, int(B)))
+```
+
+```javascript
+const num = "ZZZZZ";
+const B = 36;
+
+let ans = parseInt(num, Number(divider));
+
+console.log(ans);
+```
