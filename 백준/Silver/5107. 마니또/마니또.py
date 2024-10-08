@@ -1,5 +1,5 @@
-def find(x) :
-    if x != parent[x] :
+def find(x):
+    if parent[x] != x:
         parent[x] = find(parent[x])
     return x
 
@@ -13,22 +13,22 @@ def union(x,y) :
         parent[x] = y
 
 testcase = 0
-while True :
+while True:
     N = int(input())
-    parent = [i for i in range(N + 1)]
+    if N == 0:
+        break
+    
+    parent = [i for i in range(N+1)]
     arr = {}
     testcase += 1
-
-    if N == 0 :
-        break
-
-    for _ in range(N) :
+    for i in range(N):
         start, end = input().split()
 
-        if not start in arr :
-            arr[start] = len(arr) + 1
-        if not end in arr :
-            arr[end] = len(arr) + 1
+        if not start in arr:
+            arr[start] = len(arr) +1
+        if not end in arr:
+            arr[end] = len(arr) +1
         union(parent[arr[start]], parent[arr[end]])
     parent = set(parent)
+
     print(testcase, len(parent)-1)
