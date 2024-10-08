@@ -1,6 +1,6 @@
 def find(x):
     if parent[x] != x:
-        parent[x] = find(parent[x])
+        find(parent[x])
     return x
 
 def union(x,y) :
