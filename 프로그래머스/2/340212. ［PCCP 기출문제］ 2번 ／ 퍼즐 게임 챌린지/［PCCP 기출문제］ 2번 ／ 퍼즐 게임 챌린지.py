@@ -1,25 +1,22 @@
 def solution(diffs, times, limit):
-    max_level = max(diffs) 
-    l = 1
-    answer = max_level 
-
-    while l < max_level:
-        level = int((l + max_level) / 2) 
-        time = times[0]  
+    low , high = 1, max(diffs)
+    answer = high
+    
+    while low < high:
+        level = int((low + high) / 2)
+        time = times[0]
         
         for i in range(1, len(diffs)):
             k = 0
-            if level < diffs[i]:
+            if diffs[i] > level:
                 k = diffs[i] - level
-            time += (times[i] + times[i -1]) * k + times[i]
-
+            time += (times[i] + times[i-1]) * k + times[i]
+            
         if time <= limit:
-            max_level = level
-            answer = level  
+            high = level
+            answer = level
         else:
-            l = level +1    
+            low = level + 1
+        
 
     return answer
-
-
-    
