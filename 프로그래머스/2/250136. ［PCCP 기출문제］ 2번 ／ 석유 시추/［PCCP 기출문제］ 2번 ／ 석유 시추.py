@@ -1,38 +1,36 @@
 from collections import deque
+
 def solution(land):
-    answer = 0
-    n = len(land)
-    m = len(land[0])
-    dx = [0,0,1,-1]
-    dy = [1,-1,0,0]
-    result = [0 for i in range(m+1)]
-    visited = [[0 for i in range(m)] for j in range(n)]
-    def bfs(a, b):
-        count = 0
-        visited[a][b] = 1
+    height, width = len(land), len(land[0])
+    answer = [0] * width
+    visited = [[0] * width for _ in range(height)]
+    dx = [0, 0, -1, 1]
+    dy = [1, -1, 0, 0]
+
+    def bfs(start_x, start_y):
+        cnt = 1  
+        visited[start_x][start_y] = 1
         q = deque()
-        q.append((a,b))
-        min_y, max_y = b, b
+        q.append((start_x, start_y))
+        min_col, max_col = start_y, start_y  
+
         while q:
-            x,y = q.popleft()
-            min_y = min(min_y, y)
-            max_y = max(max_y, y)
-            count += 1
+            x, y = q.popleft()
             for i in range(4):
-                nx = x + dx[i]
-                ny = y + dy[i]
-                if nx < 0 or ny < 0 or nx >= n or ny >= m:
-                    continue
-                if visited[nx][ny] == 0 and land[nx][ny] == 1:
+                nx, ny = x + dx[i], y + dy[i]
+                if 0 <= nx < height and 0 <= ny < width and not visited[nx][ny] and land[nx][ny] == 1:
                     visited[nx][ny] = 1
-                    q.append((nx,ny))
-        
-        for i in range(min_y, max_y+1):
-            result[i] += count
-    
-    for i in range(n):
-        for j in range(m):
-            if visited[i][j] == 0 and land[i][j] == 1:
-                bfs(i,j)
-    answer = max(result)
-    return answer
+                    cnt += 1
+                    q.append((nx, ny))
+                    min_col = min(min_col, ny)
+                    max_col = max(max_col, ny)
+
+        for col in range(min_col, max_col + 1):
+            answer[col] += cnt
+
+    for i in range(height):
+        for j in range(width):
+            if land[i][j] == 1 and not visited[i][j]:
+                bfs(i, j)
+
+    return max(answer)
