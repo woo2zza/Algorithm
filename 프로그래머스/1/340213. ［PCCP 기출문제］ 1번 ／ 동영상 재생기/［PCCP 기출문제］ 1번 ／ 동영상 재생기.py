@@ -1,88 +1,26 @@
-
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-def minuteToSec(time):
-    times = time.split(":")
-    return int(times[0]) * 60 + int(times[1])
-
-def totalSecToMin(time):
-    minute = time//60
-    second = time%60
-
-    if minute >= 10:
-        minute = str(minute)
-    elif minute < 10:
-        minute = "0" + str(minute)
-    elif minute == 0:
-        minute = "00"
-    if second >= 10:
-        second = str(second)
-    elif second < 10:
-        second = "0" + str(second)
-    elif second == 0:
-        second = "00"
-
-    return minute + ":" + second
-
 def solution(video_len, pos, op_start, op_end, commands):
-    video_len = minuteToSec(video_len)
-    pos = minuteToSec(pos)
-    op_start = minuteToSec(op_start)
-    op_end = minuteToSec(op_end)
-
-    movement = {'next': 10, 'prev' : -10}
-    for command in commands:
-        if op_start <= pos <= op_end:
-            pos = op_end
-        pos += movement[command]
-        if video_len - pos < 10:
-            pos = video_len
-        if pos < 10:
-            pos = 0
-        if op_start <= pos <= op_end:
-            pos = op_end
-
-    answer = totalSecToMin(pos)
-    return answer
+    now_time = int(pos.split(":")[0]) * 60 + int(pos.split(":")[1])
+    video_time = int(video_len.split(":")[0]) * 60 + int(video_len.split(":")[1])
+    start_open = int(op_start.split(":")[0]) * 60 + int(op_start.split(":")[1])
+    end_open = int(op_end.split(":")[0]) * 60 + int(op_end.split(":")[1])
+    
+    for Input in commands:
+                
+        if start_open <= now_time and now_time <= end_open:
+            now_time = end_open
+        
+        if Input == 'next':
+            now_time += 10
+            if  now_time >= video_time:
+                now_time = video_time
+            
+        elif Input == 'prev':
+            now_time -= 10
+            if now_time <= 0:
+                now_time = 0
+        
+        if start_open <= now_time and now_time <= end_open:
+            now_time = end_open
+    
+    result = str(now_time // 60)
+    return f'{result.zfill(2)}:{str(now_time%60).zfill(2)}'
