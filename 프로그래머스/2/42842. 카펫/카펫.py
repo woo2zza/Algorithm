@@ -1,8 +1,12 @@
 def solution(brown, yellow):
-    answer = []
-    for i in range(1, yellow + 1):
-        if yellow % i == 0:
-            shar = yellow // i
-            if (shar * 2) + (i * 2) == brown - 4:
-                return [shar+2 , i+2]
+    i = 1
+    while True:
+        y_h = i
+        y_w = yellow / y_h
 
+        if brown == (y_h * 2) + ((y_w + 2) * 2):
+            answer = [round(y_w + 2), (y_h + 2)]
+            break
+        i += 1
+
+    return answer
