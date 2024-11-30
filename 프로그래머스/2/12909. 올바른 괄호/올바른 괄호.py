@@ -1,15 +1,8 @@
 def solution(s):
     stack = []
-    for char in s:
-        if char == '(':
-            stack.append(char)
-        elif char == ')':
-            if not stack:
-                return False
-            stack.pop()
+    for i in s:
+        if not stack : stack.append(i); continue
+        if stack[-1] =='(' and i==')' : stack.pop()
+        else : stack.append(i)
     
-    if len(stack) == 0:
-        return True
-    else:
-        return False
-        
+    return False if stack else True
