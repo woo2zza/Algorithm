@@ -1,8 +1,12 @@
 def solution(s):
-    stack = []
-    for i in s:
-        if not stack : stack.append(i); continue
-        if stack[-1] =='(' and i==')' : stack.pop()
-        else : stack.append(i)
-    
-    return False if stack else True
+    stack =[]
+
+    for i in range(0,len(s)):    
+        if  s[i] == '(' :
+            stack.append(s[i])
+        elif stack :
+            stack.pop()
+        else :       
+            return False
+
+    return not stack 
