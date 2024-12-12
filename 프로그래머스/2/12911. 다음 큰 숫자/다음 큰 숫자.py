@@ -1,6 +1,4 @@
 def solution(n):
-    answer = n + 1
-    zero = bin(n)[2:].count('1')
-    while(zero != bin(answer)[2:].count('1')):
-        answer += 1
-    return answer
+
+    for n2 in range(n+1,1000001):
+        if bin(n).count('1') == bin(n2).count('1') : return n2
