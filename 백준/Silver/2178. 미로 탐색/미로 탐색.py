@@ -1,30 +1,33 @@
 from collections import deque
 
 N, M = map(int, input().split())
-lst = [list(input()) for _ in range(N)]
 
-directy = [0, 0, 1, -1]
-directx = [1, -1, 0, 0]
+arr = [list(input().strip()) for _ in range(N)]
+visited = [[0] * M for _ in range(N)]
 
-def Map(i,j):
-    deq = deque()
-    deq.append((i,j))
+direct_x = [0, 0, -1, 1]
+direct_y = [1, -1, 0, 0]
 
-    while deq:
-        now = deq.popleft()
-        sy, sx = now
+def bfs(x, y):
+    q = deque()
+    q.append((x, y, 1)) 
+    visited[x][y] = 1
 
+    while q:
+        nx, ny, cnt = q.popleft()
+        
+        if nx == N - 1 and ny == M - 1:
+            return cnt
+        
+        for i in range(4):
+            dx = nx + direct_x[i]
+            dy = ny + direct_y[i]
+            
+            if 0 <= dx < N and 0 <= dy < M and visited[dx][dy] == 0 and arr[dx][dy] == '1':
+                visited[dx][dy] = 1
+                q.append((dx, dy, cnt + 1))
     
-        for q in range(4):
-            dy = sy + directy[q]
-            dx = sx + directx[q]
-            if dx > M-1 or dx < 0 or dy < 0 or dy > N-1 :continue
-            if lst[dy][dx] == '0': continue
-            if lst[dy][dx] == '1':
-                lst[dy][dx] = int(lst[sy][sx]) +1
-                deq.append((dy,dx))
+    return -1  
 
-    return lst[N-1][M-1]
-
-ret = Map(0,0)
-print(ret)
+result = bfs(0, 0)
+print(result)
