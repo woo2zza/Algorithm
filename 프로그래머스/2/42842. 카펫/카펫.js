@@ -1,14 +1,13 @@
 function solution(brown, yellow) {
-    const answer = [];
-    let height = 2;
-    let width = brown / 2;
-    let result = -1;
+    let width = brown / 2 
+    let height = 2
+    let result = -1
     
-    while(result !== 0){
-        height++;
-        width--;
-        let mul = height * width;
-        result = mul - brown - yellow;
+    while (result !== 0) {
+        width--
+        height++
+        let mul = width * height
+        result = mul - brown - yellow
     }
-    return [ width , height ];
+    return [width, height]
 }
