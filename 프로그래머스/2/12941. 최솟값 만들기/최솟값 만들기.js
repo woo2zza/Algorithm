@@ -1,9 +1,7 @@
 function solution(A,B){
-    arr1 = A.sort((a,b) => a-b)
-    arr2 = B.sort((a,b) => b-a)
-    let result = 0
-    for(i=0; i < A.length; i++ ){
-        result += (arr1[i] * arr2[i])
-    }
-    return result;
+    A.sort((a,b) => a - b)
+    B.sort((a,b) => b - a)
+    
+    result = A.reduce((sum, a, i) => sum + a * B[i], 0)
+    return result
 }
